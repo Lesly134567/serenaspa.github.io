@@ -3,37 +3,34 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <link rel="stylesheet" href="spa-1.html">
   <title>Reserva – Serena Spa</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
   <style>
-    :root{--rosa:#ff8696;--gris:#333;}
-    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
-    body{background:linear-gradient(to bottom,#fff,#f8e8e8);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
-    .card{background:#fff;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,.1);max-width:480px;width:100%;padding:40px;}
-    h2{color:var(--rosa);margin-bottom:25px;text-align:center;}
-    label{margin-top:15px;display:block;font-weight:600;}
+    body{font-family:'Poppins',sans-serif;background:#f8e8e8;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;}
+    .card{background:#fff;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,.1);max-width:420px;width:100%;padding:40px;}
+    h2{color:#ff8696;text-align:center;margin-bottom:25px;}
+    label{font-weight:600;margin-top:15px;display:block;}
     input,select,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;margin-top:5px;}
-    button{background:var(--rosa);color:#fff;border:none;padding:15px;border-radius:50px;width:100%;font-size:1rem;margin-top:25px;cursor:pointer;transition:.3s;}
+    button{background:#ff8696;color:#fff;border:none;padding:15px;border-radius:50px;width:100%;font-size:1rem;margin-top:25px;cursor:pointer;}
     button:hover{transform:scale(1.03);}
-    #preview img{max-width:100%;border-radius:8px;margin-top:10px;}
   </style>
 </head>
 <body>
   <div class="card">
     <h2>Reserva tu cita</h2>
-    <form action="https://formspree.io/f/tuID" method="POST" enctype="multipart/form-data">
-      <!-- cambia "tuID" por tu formulario en Formspree o usa Google Forms -->
-
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdyA8tABWlJtjdQhuAJqdXK7rOGE4vPUKFPd_B16tmPIfJt9A/formResponse" method="POST" target="_blank">
       <label>Nombre completo</label>
-      <input type="text" name="nombre" required/>
+      <input type="text" name="entry.1633920210" required/>
 
-      <label>Teléfono (WhatsApp)</label>
-      <input type="tel" name="telefono" placeholder="+1 829 123 4567" required/>
+      <label>Correo electrónico</label>
+      <input type="email" name="entry.227649005" required/>
 
-      <label>Elige tu masaje</label>
-      <select name="masaje" required>
-        <option value="">-- Selecciona --</option>
+      <label>Número de teléfono</label>
+      <input type="tel" name="entry.1770822543" required/>
+
+      <label>Masaje</label>
+      <select name="entry.1846923513" required>
+        <option value="">Selecciona</option>
         <option value="Relajante 30 min – $25">Relajante 30 min – $25</option>
         <option value="Relajante 60 min – $40">Relajante 60 min – $40</option>
         <option value="Descontracturante 60 min – $50">Descontracturante 60 min – $50</option>
@@ -42,34 +39,16 @@
       </select>
 
       <label>Fecha deseada</label>
-      <input type="date" name="fecha" required/>
+      <input type="date" name="entry.1771778841" required/>
 
-      <label>Comprobante de pago (foto)</label>
-      <input type="file" name="comprobante" accept="image/*" required/>
-      <div id="preview"></div>
+      <label>Comprobante de pago (imagen)</label>
+      <input type="file" name="entry.4857600" accept="image/*" required/>
 
       <label>Notas adicionales</label>
-      <textarea name="notas" rows="3" placeholder="¿Horario preferido? ¿Zonas a tratar?"></textarea>
+      <textarea name="entry.807975491" rows="2"></textarea>
 
       <button type="submit">Enviar reserva</button>
     </form>
   </div>
-
-  <!-- Vista previa de la imagen -->
-  <script>
-    document.querySelector('input[name="comprobante"]').addEventListener('change', e=>{
-      const file=e.target.files[0];
-      if(file){
-        const reader=new FileReader();
-        reader.onload=function(ev){
-          const img=document.createElement('img');
-          img.src=ev.target.result;
-          const prev=document.getElementById('preview');
-          prev.innerHTML=''; prev.appendChild(img);
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-  </script>
 </body>
 </html>
