@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Serena Spa – Relajación Total</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      --rosa-suave:#f8e8e8;
+      --verde-palido:#e8f3f0;
+      --texto:#333;
+    }
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
+    body{color:var(--texto);background:linear-gradient(to bottom,#fff,var(--rosa-suave));}
+    header{
+      background:url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1350&q=80') center/cover;
+      height:70vh;display:flex;align-items:center;justify-content:center;color:#fff;text-align:center;
+    }
+    header h1{font-size:3rem;font-weight:600;text-shadow:2px 2px 8px rgba(0,0,0,.5);}
+    nav{
+      position:fixed;top:0;left:0;width:100%;background:#ffffffee;backdrop-filter:blur(8px);
+      display:flex;justify-content:space-between;align-items:center;padding:12px 20px;z-index:1000;
+    }
+    nav a{margin:0 12px;text-decoration:none;color:var(--texto);font-weight:500;}
+    .btn-reserva{
+      background:#ff8696;color:#fff;border:none;padding:12px 24px;border-radius:50px;
+      font-weight:600;cursor:pointer;transition:.3s;
+    }
+    .btn-reserva:hover{transform:scale(1.05);}
+    section{padding:60px 20px;max-width:1000px;margin:auto;}
+    .servicios{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
+    .servicio{
+      background:#fff;border-radius:12px;box-shadow:0 4px 12px rgba(0,0,0,.08);padding:30px;text-align:center;
+    }
+    .servicio img{width:100%;border-radius:8px;margin-bottom:15px;}
+    .galeria{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));}
+    .galeria img{width:100%;border-radius:10px;transition:.3s;}
+    .galeria img:hover{transform:scale(1.05);}
+    .testimonios{display:flex;gap:20px;overflow-x:auto;padding:10px 0;}
+    .testimonio{min-width:260px;background:#fff;border-radius:12px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+    footer{background:var(--verde-palido);text-align:center;padding:30px;color:#555;}
+  </style>
+</head>
+
+<body>
+  <!-- Navegación fija + botón reservar -->
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#galeria">Galería</a>
+    <a href="#testimonios">Testimonios</a>
+    <a href="#contacto">Contacto</a>
+    <a class="btn-reserva" href="https://wa.me/18498840813?text=Hola,%20quiero%20reservar%20una%20cita%20en%20Serena%20Spa" target="_blank">Reservar</a>
+  </nav>
+
+  <!-- Hero -->
+  <header id="inicio">
+    <div>
+      <h1>Serena Spa</h1>
+      <p>Tu oasis de bienestar y belleza</p>
+    </div>
+  </header>
+
+  <a class="btn-reserva"
+  href="reserva.html"
+  target="_blank"
+  rel="noopener noreferrer">
+  Reservar
+</a>
+  <!-- Servicios -->
+  <section id="servicios">
+    <h2 style="text-align:center;margin-bottom:40px;">Nuestros Servicios</h2>
+    <div class="servicios">
+      <div class="servicio">
+        <img src="https://images.unsplash.com/photo-1600334129128-685c5582fd35?auto=format&fit=crop&w=800&q=80" alt="Masaje">
+        <h3>Masaje Relajante</h3>
+        <p>Libera tensiones y renueva tu energía.</p>
+      </div>
+      <div class="servicio">
+        <img src="https://images.unsplash.com/photo-1552693673-1bf958298935?auto=format&fit=crop&w=800&q=80" alt="Facial">
+        <h3>Tratamiento Facial</h3>
+        <p>Hidratación profunda y luminosidad.</p>
+      </div>
+      <div class="servicio">
+        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=800&q=80" alt="Spa de manos y pies">
+        <h3>Manicura & Pedicura</h3>
+        <p>Cuidado experto para tus manos y pies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería -->
+  <section id="galeria">
+    <h2 style="text-align:center;margin-bottom:30px;">Galería</h2>
+    <div class="galeria">
+      <img src="https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&w=600&q=80" alt="Spa 1">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Spa 2">
+      <img src="https://images.unsplash.com/photo-1596178065887-1198b6148b2b?auto=format&fit=crop&w=600&q=80" alt="Spa 3">
+      <img src="https://images.unsplash.com/photo-1600334089648-b0d2d3ef6844?auto=format&fit=crop&w=600&q=80" alt="Spa 4">
+    </div>
+  </section>
+
+  <!-- Testimonios -->
+  <section id="testimonios">
+    <h2 style="text-align:center;margin-bottom:30px;">Lo que dicen nuestros clientes</h2>
+    <div class="testimonios">
+      <div class="testimonio">
+        <p>“Ambiente mágico, salí renovada.”</p>
+        <strong>— Ana G.</strong>
+      </div>
+      <div class="testimonio">
+        <p>“El mejor masaje de mi vida, definitivamente regreso.”</p>
+        <strong>— Carlos R.</strong>
+      </div>
+      <div class="testimonio">
+        <p>“Profesionales y super amables.”</p>
+        <strong>— Laura M.</strong>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto">
+    <h2 style="text-align:center;margin-bottom:20px;">Contáctanos</h2>
+    <p style="text-align:center;">📍 Pinar Quemado Jarabacoa, República Dominicana  <br>
+    📞 <a href="tel:+8498840813">+1 849-884-0813</a><br>
+    ✉️ <a href="mailto:soveydasolis@gmail.com">soveydasolis@gmail.com</a></p>
+  </section>
+
+  <footer>
+    © 2025 Serena Spa. Diseñado con amor por Lesly Soveyda. Sigueme en mi 
+    <a href="https://www.instagram.com/lety_solis134" target="_blank" rel="noopener noreferrer">Instagram</a>
+  </footer>
+</body>
+</html>
