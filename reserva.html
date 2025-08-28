@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="spa-1.html">
+  <title>Reserva – Serena Spa</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--rosa:#ff8696;--gris:#333;}
+    *{box-sizing:border-box;margin:0;padding:0;font-family:'Poppins',sans-serif;}
+    body{background:linear-gradient(to bottom,#fff,#f8e8e8);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
+    .card{background:#fff;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,.1);max-width:480px;width:100%;padding:40px;}
+    h2{color:var(--rosa);margin-bottom:25px;text-align:center;}
+    label{margin-top:15px;display:block;font-weight:600;}
+    input,select,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;margin-top:5px;}
+    button{background:var(--rosa);color:#fff;border:none;padding:15px;border-radius:50px;width:100%;font-size:1rem;margin-top:25px;cursor:pointer;transition:.3s;}
+    button:hover{transform:scale(1.03);}
+    #preview img{max-width:100%;border-radius:8px;margin-top:10px;}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Reserva tu cita</h2>
+    <form action="https://formspree.io/f/tuID" method="POST" enctype="multipart/form-data">
+      <!-- cambia "tuID" por tu formulario en Formspree o usa Google Forms -->
+
+      <label>Nombre completo</label>
+      <input type="text" name="nombre" required/>
+
+      <label>Teléfono (WhatsApp)</label>
+      <input type="tel" name="telefono" placeholder="+1 829 123 4567" required/>
+
+      <label>Elige tu masaje</label>
+      <select name="masaje" required>
+        <option value="">-- Selecciona --</option>
+        <option value="Relajante 30 min – $25">Relajante 30 min – $25</option>
+        <option value="Relajante 60 min – $40">Relajante 60 min – $40</option>
+        <option value="Descontracturante 60 min – $50">Descontracturante 60 min – $50</option>
+        <option value="Hot Stone 75 min – $60">Hot Stone 75 min – $60</option>
+        <option value="Facial + Relajante 90 min – $70">Facial + Relajante 90 min – $70</option>
+      </select>
+
+      <label>Fecha deseada</label>
+      <input type="date" name="fecha" required/>
+
+      <label>Comprobante de pago (foto)</label>
+      <input type="file" name="comprobante" accept="image/*" required/>
+      <div id="preview"></div>
+
+      <label>Notas adicionales</label>
+      <textarea name="notas" rows="3" placeholder="¿Horario preferido? ¿Zonas a tratar?"></textarea>
+
+      <button type="submit">Enviar reserva</button>
+    </form>
+  </div>
+
+  <!-- Vista previa de la imagen -->
+  <script>
+    document.querySelector('input[name="comprobante"]').addEventListener('change', e=>{
+      const file=e.target.files[0];
+      if(file){
+        const reader=new FileReader();
+        reader.onload=function(ev){
+          const img=document.createElement('img');
+          img.src=ev.target.result;
+          const prev=document.getElementById('preview');
+          prev.innerHTML=''; prev.appendChild(img);
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
