@@ -4,32 +4,32 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <title>Reserva – Serena Spa</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
   <style>
     body{font-family:'Poppins',sans-serif;background:#f8e8e8;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;}
-    .card{background:#fff;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,.1);max-width:420px;width:100%;padding:40px;}
-    h2{color:#ff8696;text-align:center;margin-bottom:25px;}
-    label{font-weight:600;margin-top:15px;display:block;}
+    .card{background:#fff;border-radius:15px;box-shadow:0 8px 20px rgba(0,0,0,.1);max-width:420px;width:100%;padding:40px;text-align:center;}
+    h2{color:#ff8696;margin-bottom:25px;}
+    label{font-weight:600;margin-top:15px;display:block;text-align:left;}
     input,select,textarea{width:100%;padding:12px;border:1px solid #ccc;border-radius:8px;margin-top:5px;}
     button{background:#ff8696;color:#fff;border:none;padding:15px;border-radius:50px;width:100%;font-size:1rem;margin-top:25px;cursor:pointer;}
     button:hover{transform:scale(1.03);}
+    .msg{display:none;margin-top:20px;font-weight:bold;color:#2ed573;}
   </style>
 </head>
 <body>
   <div class="card">
     <h2>Reserva tu cita</h2>
-    <form action="https://docs.google.com/forms/d/e/1FAIpQLSdyA8tABWlJtjdQhuAJqdXK7rOGE4vPUKFPd_B16tmPIfJt9A/formResponse" method="POST" target="_blank">
-      <label>Nombre completo</label>
-      <input type="text" name="entry.1633920210" required/>
+    <form id="spaForm">
+      <label>Nombre completo *</label>
+      <input type="text" id="nombre" required/>
 
-      <label>Correo electrónico</label>
-      <input type="email" name="entry.227649005" required/>
+      <label>Correo electrónico *</label>
+      <input type="email" id="email" required/>
 
-      <label>Número de teléfono</label>
-      <input type="tel" name="entry.1770822543" required/>
+      <label>Número de teléfono *</label>
+      <input type="tel" id="telefono" required/>
 
-      <label>Masaje</label>
-      <select name="entry.1846923513" required>
+      <label>Masaje *</label>
+      <select id="masaje" required>
         <option value="">Selecciona</option>
         <option value="Relajante 30 min – $25">Relajante 30 min – $25</option>
         <option value="Relajante 60 min – $40">Relajante 60 min – $40</option>
@@ -38,17 +38,38 @@
         <option value="Facial + Relajante 90 min – $70">Facial + Relajante 90 min – $70</option>
       </select>
 
-      <label>Fecha deseada</label>
-      <input type="date" name="entry.1771778841" required/>
-
-      <label>Comprobante de pago (imagen)</label>
-      <input type="file" name="entry.4857600" accept="image/*" required/>
+      <label>Fecha deseada *</label>
+      <input type="date" id="fecha" required/>
 
       <label>Notas adicionales</label>
-      <textarea name="entry.807975491" rows="2"></textarea>
+      <textarea id="notas" rows="2"></textarea>
 
       <button type="submit">Enviar reserva</button>
     </form>
+    <p id="msg" class="msg">¡Reserva enviada! Te contactaremos pronto.</p>
   </div>
+
+  <script>
+    document.getElementById('spaForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const body = new FormData();
+      body.append('entry.1633920210', document.getElementById('nombre').value);
+      body.append('entry.227649005', document.getElementById('email').value);
+      body.append('entry.1770822543', document.getElementById('telefono').value);
+      body.append('entry.1846923513', document.getElementById('masaje').value);
+      body.append('entry.1771778841', document.getElementById('fecha').value);
+      body.append('entry.807975491', document.getElementById('notas').value);
+
+      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSdyA8tABWlJtjdQhuAJqdXK7rOGE4vPUKFPd_B16tmPIfJt9A/formResponse', {
+        method: 'POST',
+        body: body,
+        mode: 'no-cors'
+      });
+
+      document.getElementById('spaForm').style.display = 'none';
+      document.getElementById('msg').style.display = 'block';
+    });
+  </script>
 </body>
 </html>
