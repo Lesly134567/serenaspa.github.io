@@ -18,18 +18,18 @@
 <body>
   <div class="card">
     <h2>Reserva tu cita</h2>
-    <form id="spaForm">
+    <form id="spaForm" action="https://formspree.io/f/xjkeoqvd" method="POST">
       <label>Nombre completo *</label>
-      <input type="text" id="nombre" required/>
+      <input type="text" name="nombre" required/>
 
       <label>Correo electrónico *</label>
-      <input type="email" id="email" required/>
+      <input type="email" name="email" required/>
 
       <label>Número de teléfono *</label>
-      <input type="tel" id="telefono" required/>
+      <input type="tel" name="telefono" required/>
 
       <label>Masaje *</label>
-      <select id="masaje" required>
+      <select name="masaje" required>
         <option value="">Selecciona</option>
         <option value="Relajante 30 min – $25">Relajante 30 min – $25</option>
         <option value="Relajante 60 min – $40">Relajante 60 min – $40</option>
@@ -39,10 +39,10 @@
       </select>
 
       <label>Fecha deseada *</label>
-      <input type="date" id="fecha" required/>
+      <input type="date" name="fecha" required/>
 
       <label>Notas adicionales</label>
-      <textarea id="notas" rows="2"></textarea>
+      <textarea name="notas" rows="2"></textarea>
 
       <button type="submit">Enviar reserva</button>
     </form>
@@ -53,24 +53,20 @@
     document.getElementById('spaForm').addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      const body = new FormData();
-      body.append('entry.1633920210', document.getElementById('nombre').value);
-      body.append('entry.227649005', document.getElementById('email').value);
-      body.append('entry.1770822543', document.getElementById('telefono').value);
-      body.append('entry.1846923513', document.getElementById('masaje').value);
-      body.append('entry.1771778841', document.getElementById('fecha').value);
-      body.append('entry.807975491', document.getElementById('notas').value);
+      const form = e.target;
+      const formData = new FormData(form);
 
-      await fetch('https://docs.google.com/forms/d/e/1FAIpQLSdyA8tABWlJtjdQhuAJqdXK7rOGE4vPUKFPd_B16tmPIfJt9A/viewform?usp=header', {
+      await fetch(form.action, {
         method: 'POST',
-        body: body,
-        mode: 'no-cors'
+        body: formData,
+        headers: {
+          Accept: 'application/json'
+        }
       });
 
-      document.getElementById('spaForm').style.display = 'none';
+      form.style.display = 'none';
       document.getElementById('msg').style.display = 'block';
     });
   </script>
 </body>
 </html>
-
