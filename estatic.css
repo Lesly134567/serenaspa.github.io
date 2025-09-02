@@ -1,52 +1,39 @@
-
-@media (max-width: 768px) {
-    
-    nav{
-      flex-direction:column;
-      padding:8px 10px;
-    }
-    nav a{
-      margin:4px 0;
-      font-size:0.9rem;
-    }
-    .btn-reserva{
-      margin-top:8px;
-      width:100%;
-      max-width:200px;
+/* ----------- Botón hamburguesa (oculto por defecto) ----------- */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  /* ----------- Solo se muestra en móvil/tablet ----------- */
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: block;
     }
   
-   
-    header{
-      height:50vh;
-    }
-    header h1{
-      font-size:2.2rem;
-    }
-  
-   
-    section{
-      padding:40px 15px;
+    /* Resto de tus estilos para móvil */
+    nav {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 15px;
     }
   
-
-    .servicios, .galeria{
-      grid-template-columns:1fr;
-    }
-    .servicio, .galeria img{
-      max-width:100%;
-    }
-
-    .testimonios{
-      flex-direction:column;
-      align-items:center;
-    }
-    .testimonio{
-      min-width:90%;
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      margin-top: 10px;
     }
   
+    .nav-links a {
+      margin: 6px 0;
+    }
   
-    footer{
-      padding:20px 10px;
-      font-size:0.9rem;
+    .btn-reserva {
+      margin: 0;
     }
   }
